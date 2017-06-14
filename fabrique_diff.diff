@@ -1,0 +1,5 @@
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_stock.php ../plugins/fabrique_auto/.backup/stock/paquet.xml ../plugins/fabrique_auto/stock/paquet.xml
+11c11
+< 		Paquet généré le 2017-06-14 19:29:34
+---
+> 		Paquet généré le 2017-06-14 19:32:23
