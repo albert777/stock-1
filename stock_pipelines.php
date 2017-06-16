@@ -25,6 +25,13 @@ function stock_formulaire_saisies($flux) {
 			),
 			'saisies' => array(
 				array(
+					'saisie' => 'case',
+					'options' => array(
+						'nom' => 'gestion_stock',
+						'label' => _T('stock:activer_gestion_stock')
+					)
+				),
+				array(
 					'saisie' => 'input',
 					'options' => array(
 						'nom' => 'stock',
