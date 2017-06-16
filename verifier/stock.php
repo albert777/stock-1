@@ -13,14 +13,9 @@ function verifier_stock_dist($valeur, $options = array()) {
 		return $decimal;
 	}
 
-	// Récupérons le stock actuel du produit
-	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.$id_produit);
-	if ($stock) {
-		$new_stock = intval($stock) - intval($valeur);
-
-		if ($new_stock < 0) {
-			return _T('stock:erreur_stock_insuffisant');
-		}
+	include_spip('stock_fonctions');
+	if (!stock_verifier_dispo($id_produit, $valeur)) {
+		return _T('stock:erreur_stock_insuffisant');
 	}
 
 	return '';
