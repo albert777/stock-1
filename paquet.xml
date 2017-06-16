@@ -22,5 +22,6 @@
 	<pipeline nom="autoriser" inclure="stock_autorisations.php" />
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/stock.php" />
 
+	<necessite nom="produits"  compatibilite="[1.1.17;]" />
 
 </paquet>
