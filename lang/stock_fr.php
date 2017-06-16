@@ -11,9 +11,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'stock_titre' => 'Stock de produit',
 	'champ_stock_label' => 'Stock actuel',
 	'fieldset_stock' => 'Stock',
+	'erreur_stock_insuffisant' => 'Stock insuffisant',
 
 	'en_stock' => '@nb@ en stock',
-
+	'activer_gestion_stock' => 'Activer la gestion du stocks ?',
 	// C
 	'cfg_exemple' => 'Exemple',
 	'cfg_exemple_explication' => 'Explication de cet exemple',
