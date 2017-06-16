@@ -17,20 +17,23 @@ function stock_formulaire_saisies($flux) {
 
 	if ($flux['args']['form'] == 'editer_produit') {
 		$flux['data'][] = array(
+			'saisie' => 'case',
+			'options' => array(
+				'nom' => 'gestion_stock',
+				'label' => _T('stock:activer_gestion_stock'),
+				'valeur_oui' => 1,
+				'afficher_si' => '@immateriel@==""'
+			)
+		);
+
+		$flux['data'][] = array(
 			'saisie' => 'fieldset',
 			'options' => array(
 				'nom' => 'stock_fields',
 				'label' => _T('stock:fieldset_stock'),
-				'afficher_si' => '@immateriel@==""'
+				'afficher_si' => '@immateriel@==""&&@gestion_stock@=="1"'
 			),
 			'saisies' => array(
-				array(
-					'saisie' => 'case',
-					'options' => array(
-						'nom' => 'gestion_stock',
-						'label' => _T('stock:activer_gestion_stock')
-					)
-				),
 				array(
 					'saisie' => 'input',
 					'options' => array(
