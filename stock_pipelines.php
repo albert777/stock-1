@@ -20,7 +20,8 @@ function stock_formulaire_saisies($flux) {
 			'saisie' => 'fieldset',
 			'options' => array(
 				'nom' => 'stock_fields',
-				'label' => _T('stock:fieldset_stock')
+				'label' => _T('stock:fieldset_stock'),
+				'afficher_si' => '@immateriel@==""'
 			),
 			'saisies' => array(
 				array(
