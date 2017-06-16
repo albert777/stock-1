@@ -9,6 +9,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// S
 	'stock_titre' => 'Stock de produit',
+	'champ_stock_label' => 'Stock actuel',
+	'fieldset_stock' => 'Stock',
+
+	'en_stock' => '@nb@ en stock',
 
 	// C
 	'cfg_exemple' => 'Exemple',

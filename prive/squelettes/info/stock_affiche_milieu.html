@@ -1,0 +1,9 @@
+<B_produit_stock>
+	<BOUCLE_produit_stock(PRODUITS){id_produit}{statut?}>
+		<div class="champ contenu_stock[ (#STOCK*|strlen|?{'',vide})]">
+			<div class="label"><:stock:champ_stock_label:></div>
+			<div dir="#LANG_DIR" class="#EDIT{stock} stock">#STOCK</div>
+		</div>
+	</BOUCLE_produit_stock>
+</B_produit_stock>
+<//B_produit_stock>

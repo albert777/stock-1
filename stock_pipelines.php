@@ -28,7 +28,7 @@ function stock_formulaire_saisies($flux) {
 					'options' => array(
 						'nom' => 'stock',
 						'type' => 'number',
-						'label' => _T('stock:titre_stock')
+						'label' => _T('stock:champ_stock_label')
 					),
 					'verifier' => array(
 						'type' => 'entier',
@@ -39,6 +39,27 @@ function stock_formulaire_saisies($flux) {
 				)
 			)
 		);
+	}
+
+	return $flux;
+}
+
+function stock_affiche_milieu($flux) {
+
+	if ($exec = trouver_objet_exec($flux['args']['exec'])
+		and $exec['edition'] == false
+		and $exec['type'] == 'produit'
+	) {
+		$id_produit = intval($flux['args']['id_produit']);
+		$texte = recuperer_fond('prive/squelettes/info/stock_affiche_milieu', array('id_produit' => $id_produit));
+	}
+
+	if (isset($texte)) {
+		if ($p = strpos($flux['data'], '<!--affiche_milieu-->')) {
+			$flux['data'] = substr_replace($flux['data'], $texte, $p, 0);
+		} else {
+			$flux['data'] .= $texte;
+		}
 	}
 
 	return $flux;
