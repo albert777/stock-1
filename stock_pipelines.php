@@ -20,7 +20,7 @@ function stock_formulaire_saisies($flux) {
 			'saisie' => 'case',
 			'options' => array(
 				'nom' => 'gestion_stock',
-				'label' => _T('stock:activer_gestion_stock'),
+				'label_case' => _T('stock:activer_gestion_stock'),
 				'valeur_oui' => 1,
 				'afficher_si' => '@immateriel@==""'
 			)
