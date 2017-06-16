@@ -76,3 +76,35 @@ function stock_affiche_milieu($flux) {
 
 	return $flux;
 }
+
+function stock_post_edition($flux) {
+
+	if ($flux['args']['table'] == table_objet_sql('commande')
+		and $flux['args']['action'] == 'instituer'
+		and $flux['args']['statut_ancien'] == 'encours'
+		and $flux['data']['statut'] == 'paye'
+	) {
+		// on va réduire les stock car la commande va être envoyée.
+		$id_commande = $flux['args']['id_objet'];
+
+		// On récupère le détail de la commande
+		$objets = sql_allfetsel(
+			'id_objet, quantite',
+			'spip_commandes_details',
+			'objet='.sql_quote('produits').' AND id_commande='.intval($id_commande)
+		);
+
+		foreach ($objets as $objet) {
+			$quantite = $objet['quantite'];
+
+			// supprimer la quantité vendue de la commande
+			sql_update(
+				'spip_produits',
+				array('stock' => 'stock-'.$quantite),
+				'id_produit='.intval($objet['id_objet']).' AND gestion_stock=1'
+			);
+		}
+	}
+
+	return $flux;
+}
