@@ -21,6 +21,7 @@
 
 	<pipeline nom="autoriser" inclure="stock_autorisations.php" />
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/stock.php" />
+	<pipeline nom="formulaire_saisies" inclure="stock_pipelines.php" />
 
 	<necessite nom="produits" compatibilite="[1.1.17;]" />
   <utilise nom="verifier" compatibilite="[1.6.5;]" />
