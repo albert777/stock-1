@@ -21,6 +21,7 @@ function stock_formulaire_saisies($flux) {
 			'options' => array(
 				'nom' => 'gestion_stock',
 				'label_case' => _T('stock:activer_gestion_stock'),
+				'li_class' => 'pleine_largeur',
 				'valeur_oui' => 1,
 				'afficher_si' => '@immateriel@==""'
 			)
