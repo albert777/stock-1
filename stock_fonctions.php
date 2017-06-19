@@ -30,6 +30,38 @@ function stock_produits_commande($id_commande) {
 
 
 /**
+ * Calcul le stock d'un produit. On prend en compte les éventuel commande avec
+ * le statut "encours" afin de leur réserver les produits
+ *
+ * @param int $id_produit
+ * @access public
+ * @return int
+ */
+function stock($id_produit) {
+	// Récupérons le stock actuel du produit
+	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.intval($id_produit));
+
+	// On supprime également du stock les éventuel éléments qui serait dans des commandes "encours"
+	// Une commande en cours réserve donc une partie des éléments du stock pour elle.
+	$encours = sql_getfetsel(
+		'count(*) AS nb',
+		'spip_commandes_details AS cd
+		INNER JOIN spip_commandes AS c ON cd.id_commande = c.id_commande',
+		'objet='.sql_quote('produits').' AND id_objet='.intval($id_produit).' AND c.statut='.sql_quote('encours')
+	);
+
+	$stock = intval($stock) - intval($encours);
+
+	return $stock;
+}
+
+function balise_STOCK_dist($p) {
+	$id_produit = champ_sql('id_produit', $p);
+	$p->code = "stock($id_produit)";
+	return $p;
+}
+
+/**
  * Verifier si une quantité est disponible dans le stock d'un produit
  *
  * @param int $id_produit
@@ -39,8 +71,7 @@ function stock_produits_commande($id_commande) {
  */
 function stock_verifier_dispo($id_produit, $quantite) {
 
-	// Récupérons le stock actuel du produit
-	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.intval($id_produit));
+	$stock = stock($id_produit);
 	if ($stock != null) {
 		// Calculer le nouveau stock
 		$new_stock = intval($stock) - intval($quantite);
