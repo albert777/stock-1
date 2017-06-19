@@ -63,7 +63,10 @@ function stock_affiche_milieu($flux) {
 		and $exec['type'] == 'produit'
 	) {
 		$id_produit = intval($flux['args']['id_produit']);
-		$texte = recuperer_fond('prive/squelettes/info/stock_affiche_milieu', array('id_produit' => $id_produit));
+		$texte = recuperer_fond(
+			'prive/squelettes/info/stock_affiche_milieu',
+			array('id_produit' => $id_produit)
+		);
 	}
 
 	if (isset($texte)) {
