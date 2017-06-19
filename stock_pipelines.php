@@ -88,11 +88,7 @@ function stock_post_edition($flux) {
 		$id_commande = $flux['args']['id_objet'];
 
 		// On récupère le détail de la commande
-		$objets = sql_allfetsel(
-			'id_objet, quantite',
-			'spip_commandes_details',
-			'objet='.sql_quote('produits').' AND id_commande='.intval($id_commande)
-		);
+		$objets = stock_produits_commande($id_commande);
 
 		foreach ($objets as $objet) {
 			$quantite = $objet['quantite'];

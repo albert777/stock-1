@@ -14,6 +14,22 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 /**
+ * Retrouve tout les produits d'une commande qui possède une gestion des stocks
+ *
+ * @param int $id_commande
+ * @access public
+ * @return array
+ */
+function stock_produits_commande($id_commande) {
+	return sql_allfetsel(
+		'id_objet, quantite',
+		'spip_commandes_details',
+		'objet='.sql_quote('produits').' AND id_commande='.intval($id_commande)
+	);
+}
+
+
+/**
  * Verifier si une quantité est disponible dans le stock d'un produit
  *
  * @param int $id_produit
