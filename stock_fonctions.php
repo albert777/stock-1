@@ -22,7 +22,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  */
 function stock_produits_commande($id_commande) {
 	return sql_allfetsel(
-		'id_objet, quantite',
+		'id_objet as id_produit, quantite',
 		'spip_commandes_details',
 		'objet='.sql_quote('produits').' AND id_commande='.intval($id_commande)
 	);

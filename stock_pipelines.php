@@ -97,7 +97,7 @@ function stock_post_edition($flux) {
 			sql_update(
 				'spip_produits',
 				array('stock' => 'stock-'.$quantite),
-				'id_produit='.intval($objet['id_objet']).' AND gestion_stock=1'
+				'id_produit='.intval($objet['id_produit']).' AND gestion_stock=1'
 			);
 		}
 	}
