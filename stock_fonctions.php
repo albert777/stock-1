@@ -72,13 +72,12 @@ function balise_STOCK_dist($p) {
 function stock_verifier_dispo($id_produit, $quantite) {
 
 	$stock = stock($id_produit);
-	if ($stock != null) {
-		// Calculer le nouveau stock
-		$new_stock = intval($stock) - intval($quantite);
 
-		if ($new_stock < 0) {
-			return false;
-		}
+	// Calculer le nouveau stock
+	$new_stock = intval($stock) - intval($quantite);
+
+	if ($new_stock < 0) {
+		return false;
 	}
 
 	return true;
