@@ -40,7 +40,7 @@ function stock_produits_commande($id_commande) {
 function stock_verifier_dispo($id_produit, $quantite) {
 
 	// Récupérons le stock actuel du produit
-	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.$id_produit);
+	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.intval($id_produit));
 	if ($stock) {
 		// Calculer le nouveau stock
 		$new_stock = intval($stock) - intval($quantite);
