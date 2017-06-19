@@ -52,3 +52,34 @@ function stock_verifier_dispo($id_produit, $quantite) {
 
 	return true;
 }
+
+/**
+ * Vérifier la disponibilité des stock en fonction de la commande
+ *
+ * @param int $id_commande
+ * @access public
+ * @return bool
+ */
+function stock_commande_verifier_dispo($id_commande) {
+
+	$produits = stock_produits_commande($id_commande);
+
+	$erreur = true;
+	// On vérifie les stocks pour tout les produit de la commande :
+	foreach ($produits as $produit) {
+		$erreur = stock_verifier_dispo($produit['id_produit'], $produit['quantite']);
+		if (!$erreur) {
+			return $erreur;
+		}
+	}
+
+	return $erreur;
+}
+
+function filtre_stock_commande_verifier_dispo_dist($id_commande) {
+	if (stock_commande_verifier_dispo($id_commande)){
+		return ' ';
+	} else {
+		return '';
+	}
+}
