@@ -44,7 +44,7 @@ function stock($id_produit) {
 	// On supprime également du stock les éventuel éléments qui serait dans des commandes "encours"
 	// Une commande en cours réserve donc une partie des éléments du stock pour elle.
 	$encours = sql_getfetsel(
-		'count(*) AS nb',
+		'SUM(quantite) AS nb',
 		'spip_commandes_details AS cd
 		INNER JOIN spip_commandes AS c ON cd.id_commande = c.id_commande',
 		'objet='.sql_quote('produits').' AND id_objet='.intval($id_produit).' AND c.statut='.sql_quote('encours')
