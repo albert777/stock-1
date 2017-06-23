@@ -115,7 +115,7 @@ function stock_commande_verifier_dispo($id_commande) {
 }
 
 function filtre_stock_commande_verifier_dispo_dist($id_commande) {
-	if (stock_commande_verifier_dispo($id_commande)){
+	if (stock_commande_verifier_dispo($id_commande)) {
 		return ' ';
 	} else {
 		return '';
