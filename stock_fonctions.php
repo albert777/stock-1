@@ -83,6 +83,14 @@ function stock_verifier_dispo($id_produit, $quantite) {
 	return true;
 }
 
+function filtre_stock_verifier_dispo_dist($id_produit, $quantite) {
+	if (stock_verifier_dispo($id_produit, $quantite)) {
+		return ' ';
+	} else {
+		return '';
+	}
+}
+
 /**
  * Vérifier la disponibilité des stock en fonction de la commande
  *
