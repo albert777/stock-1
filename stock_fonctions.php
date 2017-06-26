@@ -38,6 +38,7 @@ function stock_produits_commande($id_commande) {
  * @return int
  */
 function stock($id_produit) {
+
 	// Récupérons le stock actuel du produit
 	$stock = sql_getfetsel('stock', 'spip_produits', 'gestion_stock=1 AND id_produit='.intval($id_produit));
 
@@ -70,6 +71,12 @@ function balise_STOCK_dist($p) {
  * @return bool
  */
 function stock_verifier_dispo($id_produit, $quantite) {
+
+	// Si la gestion des stock n'est pas activée pour le produit on renvoie true
+	$gestion = sql_getfetsel('gestion_stock', 'spip_produits', 'id_produit='.intval($id_produit));
+	if (!$gestion) {
+		return true;
+	}
 
 	$stock = stock($id_produit);
 
