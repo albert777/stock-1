@@ -1,0 +1,33 @@
+<div class="formulaire_spip formulaire_#FORM">
+
+	[<p class="reponse_formulaire reponse_formulaire_erreur">
+	(#ENV*{message_erreur})
+	</p>]
+	[<p class="reponse_formulaire reponse_formulaire_ok">
+		(#ENV*{message_ok})
+	</p>]
+
+	[(#EDITABLE|oui)
+	<form action="#ENV{action}" method="post">
+		#ACTION_FORMULAIRE
+
+		<div class="input-group">
+
+			<div class="input-group-button">
+				<input id="boutonmoins" type="button" class="button" value="-" />
+			</div>
+
+			<input name="stock" type="number" value="#ENV{stock}" class="input-group-field" min="0" />
+
+			<div class="input-group-button">
+				<input id="boutonplus" type="button" class="button" value="+" />
+			</div>
+
+			<div class="input-group-button">
+				<input type="submit" class="button" value="<:pass_ok:>" />
+			</div>
+
+		</div>
+	</form>
+	]
+</div>
